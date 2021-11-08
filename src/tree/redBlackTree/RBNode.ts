@@ -14,7 +14,7 @@ export class RBNode<K, V> {
    * キー
    * @internal
    */
-  private _key: K;
+  private readonly _key: K;
 
   /**
    * 値
@@ -82,10 +82,6 @@ export class RBNode<K, V> {
 
   get key(): K {
     return this._key;
-  }
-
-  set key(key: K) {
-    this._key = key;
   }
 
   get value(): V {
