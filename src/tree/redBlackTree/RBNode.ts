@@ -8,7 +8,7 @@ export class RBNode<K, V> {
    * true : 黒
    * @internal
    */
-  private _color: boolean;
+  private _isBlack: boolean;
 
   /**
    * キー
@@ -49,7 +49,7 @@ export class RBNode<K, V> {
   constructor(key: K, value: V) {
     this._key = key;
     this._value = value;
-    this._color = false;
+    this._isBlack = false;
   }
 
   /**
@@ -58,8 +58,8 @@ export class RBNode<K, V> {
    *
    * @returns boolean
    */
-  public isRedColor(): boolean {
-    return this._color;
+  public isBlackColor(): boolean {
+    return this._isBlack;
   }
 
   /**
@@ -68,7 +68,7 @@ export class RBNode<K, V> {
    * @returns void
    */
   public toRedColor(): void {
-    this._color = false;
+    this._isBlack = false;
   }
 
   /**
@@ -77,7 +77,7 @@ export class RBNode<K, V> {
    * @returns void
    */
   public toBlackColor(): void {
-    this._color = true;
+    this._isBlack = true;
   }
 
   get key(): K {
