@@ -38,7 +38,7 @@ export class RBNode<K, V> {
    * 親
    * @internal
    */
-  private _parentChild: RBNode<K, V>;
+  private _parent: RBNode<K, V>;
 
   /**
    * 赤色のノードを生成します。
@@ -107,11 +107,11 @@ export class RBNode<K, V> {
     this._rightChild = rbnode;
   }
 
-  get parentChild(): RBNode<K, V> {
-    return this._parentChild;
+  get getParentOrNull(): RBNode<K, V> | null {
+    return this._parent;
   }
 
-  set parentChild(rbnode: RBNode<K, V>) {
-    this._parentChild = rbnode;
+  set parent(rbnode: RBNode<K, V>) {
+    this._parent = rbnode;
   }
 }
