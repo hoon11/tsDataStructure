@@ -92,14 +92,14 @@ export class RBNode<K, V> {
     this._value = value;
   }
 
-  get leftChild(): RBNode<K, V> {
+  get getLeftChildOrNull(): RBNode<K, V> | null {
     return this._leftChild;
   }
   set leftChild(rbnode: RBNode<K, V>) {
     this._leftChild = rbnode;
   }
 
-  get rightChild(): RBNode<K, V> {
+  get getRightChildOrNull(): RBNode<K, V> | null {
     return this._rightChild;
   }
 
