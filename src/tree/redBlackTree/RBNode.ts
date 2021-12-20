@@ -1,74 +1,55 @@
 /**
  * 赤黒木のためなノードを定義したクラス
  */
-export class RBNode<K, V> {
+export class RBNode<T> {
   /**
    * ノードの色
+   * true  : 黒
    * false : 赤
-   * true : 黒
    * @internal
    */
-  private _isBlack: boolean;
-
-  /**
-   * キー
-   * @internal
-   */
-  private readonly _key: K;
-
-  /**
-   * 値
-   * @internal
-   */
-  private _value: V;
+  private _hasBlack: boolean;
 
   /**
    * 左側の子
    * @internal
    */
-  private _leftChild: RBNode<K, V>;
+  private _leftChild: RBNode<T> | null;
 
   /**
    * 右側の子
    * @internal
    */
-  private _rightChild: RBNode<K, V>;
+  private _rightChild: RBNode<T> | null;
 
   /**
    * 親
    * @internal
    */
-  private _parent: RBNode<K, V>;
+  private _parent: RBNode<T> | null;
+
+  /**
+   * 値
+   * @internal
+   */
+  private _value: T;
 
   /**
    * 赤色のノードを生成します。
    *
-   * @param key - ノードのキー
    * @param value - ノードの値
    */
-  constructor(key: K, value: V) {
-    this._key = key;
+  constructor(value: T) {
     this._value = value;
-    this._isBlack = false;
+    this._hasBlack = false;
   }
 
-  /**
-   * ノードの色を判定します。
-   * 赤色ならfalse, 黒色ならtrueを返します。
-   *
-   * @returns boolean
-   */
-  public isBlackColor(): boolean {
-    return this._isBlack;
+  public setBlack() {
+    this._hasBlack = true;
   }
 
-  /**
-   * ノードを赤色にします。
-   *
-   * @returns void
-   */
-  public toRedColor(): void {
-    this._isBlack = false;
+  public setRed() {
+    this._hasBlack = false;
   }
 
   /**
@@ -76,42 +57,38 @@ export class RBNode<K, V> {
    *
    * @returns void
    */
-  public toBlackColor(): void {
-    this._isBlack = true;
+  get hasBlack(): boolean {
+    return this._hasBlack;
   }
 
-  get key(): K {
-    return this._key;
-  }
-
-  get value(): V {
+  get value(): T {
     return this._value;
   }
 
-  set value(value: V) {
+  set value(value: T) {
     this._value = value;
   }
 
-  get getLeftChildOrNull(): RBNode<K, V> | null {
+  get leftChild(): RBNode<T> | null {
     return this._leftChild;
   }
-  set leftChild(rbnode: RBNode<K, V>) {
+  set leftChild(rbnode: RBNode<T>) {
     this._leftChild = rbnode;
   }
 
-  get getRightChildOrNull(): RBNode<K, V> | null {
+  get rightChild(): RBNode<T> | null {
     return this._rightChild;
   }
 
-  set rightChild(rbnode: RBNode<K, V>) {
+  set rightChild(rbnode: RBNode<T>) {
     this._rightChild = rbnode;
   }
 
-  get getParentOrNull(): RBNode<K, V> | null {
+  get parent(): RBNode<T> | null {
     return this._parent;
   }
 
-  set parent(rbnode: RBNode<K, V>) {
+  set parent(rbnode: RBNode<T>) {
     this._parent = rbnode;
   }
 }
